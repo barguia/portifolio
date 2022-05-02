@@ -21,3 +21,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::post('/register', [AuthController::class, 'register'])->name('api.register');
 Route::post('/login', [AuthController::class, 'login'])->name('api.login');
+
+Route::middleware('auth:api')->group(function () {
+    Route::get('/users', function () {
+        return \App\Models\User::all();
+    });
+});
