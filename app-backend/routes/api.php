@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\AclProfileController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -26,4 +27,6 @@ Route::middleware('auth:api')->group(function () {
     Route::get('/users', function () {
         return \App\Models\User::all();
     });
+
+    Route::resource('/profiles', AclProfileController::class);
 });
