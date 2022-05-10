@@ -27,6 +27,12 @@ Route::middleware('auth:api')->group(function () {
     Route::get('/users', function () {
         return \App\Models\User::all();
     });
+});
 
+Route::name('manager.')->prefix('adm/')->middleware(['auth:api'])->group(function () {
     Route::resource('/profiles', AclProfileController::class);
+});
+
+Route::name('client.')->prefix('cli/')->middleware(['auth:api'])->group(function () {
+
 });

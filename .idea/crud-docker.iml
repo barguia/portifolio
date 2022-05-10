@@ -133,6 +133,12 @@
       <excludeFolder url="file://$MODULE_DIR$/app-backend/vendor/league/event" />
       <excludeFolder url="file://$MODULE_DIR$/app-backend/vendor/nyholm/psr7" />
       <excludeFolder url="file://$MODULE_DIR$/app-backend/vendor/php-http/message-factory" />
+      <excludeFolder url="file://$MODULE_DIR$/app-backend/vendor/doctrine/deprecations" />
+      <excludeFolder url="file://$MODULE_DIR$/app-backend/vendor/doctrine/dbal" />
+      <excludeFolder url="file://$MODULE_DIR$/app-backend/vendor/doctrine/event-manager" />
+      <excludeFolder url="file://$MODULE_DIR$/app-backend/vendor/doctrine/cache" />
+      <excludeFolder url="file://$MODULE_DIR$/app-backend/vendor/psr/cache" />
+      <excludeFolder url="file://$MODULE_DIR$/app-backend/vendor/squizlabs/php_codesniffer" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
