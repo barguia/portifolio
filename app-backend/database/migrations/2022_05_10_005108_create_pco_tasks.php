@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('pco_tasks', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('pco_person_id')->constrained('pco_persons');
             $table->foreignId('ctl_task_id')->constrained('ctl_tasks');
             $table->foreignId('pco_process_id')->constrained('pco_process');
             $table->unsignedInteger('aging_in_days')->nullable();

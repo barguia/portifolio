@@ -8,6 +8,11 @@ class AbstractCRUDRepository
 {
     protected $model;
 
+    public function getModelById($id)
+    {
+        return $this->model->find($id);
+    }
+
     public function index(): Response
     {
         try {
@@ -24,7 +29,6 @@ class AbstractCRUDRepository
 
             return response(['data' => '', 'message' => 'Records not found.'], 404);
         } catch (\Exception $error) {
-
             return response(['message' => 'Something wrong happen. Try again.'], 500);
         }
     }
@@ -71,7 +75,6 @@ class AbstractCRUDRepository
 
             return response(['data' => '', 'message' => 'Record not found.'], 200);
         } catch (\Exception $error) {
-            dd($error);
             return response(['message' => 'Something wrong happen. Try again.'], 500);
         }
     }

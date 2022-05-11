@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('ctl_process', function (Blueprint $table) {
             $table->id();
-            $table->string(' process')->unique();
-            $table->foreignId('ctl_process_hierarchy_id')->constrained(' ctl_process_hierarchy');
+            $table->string('process')->unique();
+            $table->foreignId('ctl_process_hierarchy_id')->constrained('ctl_process_hierarchies');
             $table->timestamps();
             $table->softDeletes();
         });

@@ -11,6 +11,17 @@ class PcoProcess extends Model
 {
     protected $table = 'pco_process';
 
+    public $fillable = array(
+        'ctl_process_id',
+        'pco_people_life_id',
+        'pco_process_id'
+    );
+
+    public function peopleLife(): BelongsTo
+    {
+        return $this->belongsTo(PcoPerson::class, 'pco_people_life_id');
+    }
+
     public function tasks(): HasMany
     {
         return $this->hasMany(PcoTask::class, 'pco_process_id');
@@ -24,5 +35,10 @@ class PcoProcess extends Model
     public function pcoProcess(): HasMany
     {
         return $this->HasMany(PcoProcess::class, 'pco_process_id');
+    }
+
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'user_id');
     }
 }

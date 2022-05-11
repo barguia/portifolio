@@ -13,13 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('ctl_tasks', function (Blueprint $table) {
+        Schema::create('pco_persons', function (Blueprint $table) {
             $table->id();
-            $table->string('task');
-            $table->foreignId('ctl_process_id')->nullable()->constrained('ctl_process');
-            $table->unique(['task', 'ctl_process_id']);
+            $table->string('name');
+            $table->date('birth_date');
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 
@@ -30,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ctl_tasks');
+        Schema::dropIfExists('pco_people');
     }
 };

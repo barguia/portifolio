@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('ctl_process_hierarchies', function (Blueprint $table) {
             $table->id();
-            $table->string('hirarchy')->unique();
+            $table->string('hierarchy')->unique();
             $table->timestamps();
             $table->softDeletes();
         });
