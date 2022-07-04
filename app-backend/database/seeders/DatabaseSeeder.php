@@ -14,12 +14,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call(AclRouteSeeder::class);
         $this->call(AclProfileSeeder::class);
-        $this->call(CtlProcessHierarchySeeder::class);
-        $this->call(CtlProcessSeeder::class);
-        $this->call(CtlTaskSeeder::class);
         $this->call(CtlTaskStateSeeder::class);
-
     }
 }

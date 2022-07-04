@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('ctl_tasks', function (Blueprint $table) {
             $table->id();
             $table->string('task');
-            $table->foreignId('ctl_process_id')->nullable()->constrained('ctl_process');
+            $table->foreignId('ctl_process_id')->nullable()->constrained('ctl_process')->cascadeOnDelete();
             $table->unique(['task', 'ctl_process_id']);
             $table->timestamps();
             $table->softDeletes();

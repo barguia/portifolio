@@ -15,10 +15,13 @@ return new class extends Migration
     {
         Schema::create('pco_tasks_states', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('ctl_taks_state_id')->constrained('ctl_tasks_states');
-            $table->foreignId('pco_task_id')->constrained('pco_tasks');
+            $table->foreignId('ctl_taks_state_id')->constrained('ctl_tasks_states')
+                ->cascadeOnDelete();
+            $table->foreignId('pco_task_id')->constrained('pco_tasks')
+                ->cascadeOnDelete();
             $table->unsignedInteger('aging_in_days')->nullable();
-            $table->foreignId('user_id')->constrained('users');
+            $table->foreignId('user_id')->constrained('users')
+                ->cascadeOnDelete();
             $table->timestamps();
             $table->timestamp('finalized_at')->nullable();
         });

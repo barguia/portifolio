@@ -15,11 +15,15 @@ return new class extends Migration
     {
         Schema::create('pco_tasks', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('pco_person_id')->constrained('pco_persons');
-            $table->foreignId('ctl_task_id')->constrained('ctl_tasks');
-            $table->foreignId('pco_process_id')->constrained('pco_process');
+            $table->foreignId('pco_person_id')->constrained('pco_persons')
+                ->cascadeOnDelete();
+            $table->foreignId('ctl_task_id')->constrained('ctl_tasks')
+                ->cascadeOnDelete();
+            $table->foreignId('pco_process_id')->constrained('pco_process')
+                ->cascadeOnDelete();
             $table->unsignedInteger('aging_in_days')->nullable();
-            $table->foreignId('user_id')->constrained('users');
+            $table->foreignId('user_id')->constrained('users')
+                ->cascadeOnDelete();
             $table->timestamps();
             $table->timestamp('finalized_at')->nullable();
         });

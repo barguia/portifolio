@@ -17,7 +17,7 @@ class PcoTaskRepository
         $this->processRepository = new PcoProcessRepository();
     }
 
-    public function create(CtlTask $task, $peopleId): PcoTask
+    public function create($peopleId, CtlTask $task): PcoTask
     {
         $newTask = $this->model->create([
             'ctl_task_id' => $task->id,

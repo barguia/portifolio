@@ -31,6 +31,14 @@ Route::middleware('auth:api')->group(function () {
 
 Route::name('manager.')->prefix('adm/')->middleware(['auth:api'])->group(function () {
     Route::resource('/profiles', AclProfileController::class);
+
+    Route::get('/test', function () {
+        #$person = \App\Models\PcoPerson::first();
+        $tasks =  \App\Models\CtlTask::get();
+        dd($tasks->first());
+        #\App\Repositories\PcoTaskRepository::create();
+        return $person;
+    });
 });
 
 Route::name('client.')->prefix('cli/')->middleware(['auth:api'])->group(function () {

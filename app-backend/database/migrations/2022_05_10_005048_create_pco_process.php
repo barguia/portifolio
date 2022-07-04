@@ -15,9 +15,9 @@ return new class extends Migration
     {
         Schema::create('pco_process', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('ctl_process_id')->constrained('ctl_process');
+            $table->foreignId('ctl_process_id')->constrained('ctl_process')->cascadeOnDelete();
             $table->unsignedInteger('aging_in_days')->nullable();
-            $table->foreignId('user_id')->constrained('users');
+            $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
             $table->timestamps();
             $table->timestamp('finalized_at')->nullable();
         });
