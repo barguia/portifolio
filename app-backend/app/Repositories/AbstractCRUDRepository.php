@@ -4,7 +4,7 @@ namespace App\Repositories;
 
 use Illuminate\Http\Response;
 
-class AbstractCRUDRepository
+class   AbstractCRUDRepository
 {
     protected $model;
 
@@ -17,17 +17,15 @@ class AbstractCRUDRepository
     {
         try {
             $records = $this->model->all();
-            if ($records->count() > 0) {
-                return response(
-                    [
-                        'data' => $records,
-                        'message' => 'Records found successfully.'
-                    ],
-                    200
-                );
-            }
+            return response(
+                [
+                    'data' => $records,
+                    'message' => 'Records found successfully.'
+                ],
+                200
+            );
 
-            return response(['data' => '', 'message' => 'Records not found.'], 404);
+//            return response(['data' => [], 'message' => 'Records not found.'], 404);
         } catch (\Exception $error) {
             return response(['message' => 'Something wrong happen. Try again.'], 500);
         }
