@@ -4,7 +4,7 @@ namespace App\Repositories;
 
 use Illuminate\Http\Response;
 
-class   AbstractCRUDRepository
+class AbstractCRUDRepository
 {
     protected $model;
 
@@ -103,7 +103,6 @@ class   AbstractCRUDRepository
             }
 
             return $responseData;
-
         } catch (\Exception $error) {
             return response(['message' => 'Something wrong happen. Try again.'], 500);
         }

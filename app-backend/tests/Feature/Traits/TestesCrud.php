@@ -38,8 +38,7 @@ trait TestesCrud
 
     public function testUsuarioNaoAutenticadoNaoPodeAcessarStore()
     {
-        $response = $this->actingAs($this->user, 'api')
-            ->post($this->rota, $this->dadosCreate, $this->headersSemAutenticacao);
+        $response = $this->post($this->rota, $this->dadosCreate, $this->headersSemAutenticacao);
         $response->assertStatus(401);
     }
 
@@ -70,7 +69,7 @@ trait TestesCrud
      */
     public function testUsuarioNaoAutenticadoNaoPodeAcessarShow(array $dados): void
     {
-        $response = $this->get($this->rota . $dados['data']['user']['id'], $this->headersSemAutenticacao);
+        $response = $this->get($this->rota . $dados['data']['id'], $this->headersSemAutenticacao);
         $response->assertStatus(401);
     }
 
@@ -82,7 +81,7 @@ trait TestesCrud
     public function testUsuarioAutenticadoPodeAcessarShow(array $dados): array
     {
         $response = $this->actingAs($this->user, 'api')
-            ->get($this->rota . $dados['data']['user']['id']);
+            ->get($this->rota . $dados['data']['id']);
         $response->assertStatus(200);
         return $response->json();
     }
@@ -104,7 +103,8 @@ trait TestesCrud
     {
         $response = $this->patch(
             $this->rota . $dados['data']['id'],
-            $this->dadosUpdate, $this->headersSemAutenticacao
+            $this->dadosUpdate,
+            $this->headersSemAutenticacao
         );
         $response->assertStatus(401);
     }
@@ -115,7 +115,8 @@ trait TestesCrud
      */
     public function testUsuarioAutenticadoEnviouTiposDadosCorretosEPodeAcessarUpdate(array $dados): array
     {
-        $response = $this->patch($this->rota . $dados['data']['id'], $this->dadosUpdate, $this->headers);
+        $response = $this->actingAs($this->user, 'api')
+            ->patch($this->rota . $dados['data']['id'], $this->dadosUpdate);
         $response->assertStatus(200);
         return $response->json();
     }

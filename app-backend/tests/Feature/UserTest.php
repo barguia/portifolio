@@ -47,7 +47,7 @@ class UserTest extends TestCase
      */
     public function testUsuarioAutenticadoEnviouTiposDadosCorretosEPodeAcessarUpdate(array $data): array
     {
-        $user_id = $data['data']['user']['id'];
+        $user_id = $data['data']['id'];
         $user = User::find($user_id);
         $response = $this->actingAs($user, 'api')
             ->put($this->rota . $user_id, $this->dadosUpdate, $this->headers);

@@ -26,18 +26,11 @@ Route::post('/login', [AuthController::class, 'login'])->name('api.login');
 
 Route::resource('/users', UserController::class);
 
+
 Route::name('manager.')->prefix('adm/')->middleware(['auth:api'])->group(function () {
     Route::resource('/profiles', AclProfileController::class);
-
-    Route::get('/test', function () {
-        #$person = \App\Models\PcoPerson::first();
-        $tasks =  \App\Models\CtlTask::get();
-        dd($tasks->first());
-        #\App\Repositories\PcoTaskRepository::create();
-        return $person;
-    });
 });
 
 Route::name('client.')->prefix('cli/')->middleware(['auth:api'])->group(function () {
-
+    //
 });
