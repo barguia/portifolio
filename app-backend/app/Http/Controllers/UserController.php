@@ -16,7 +16,7 @@ class UserController extends Controller
     {
         $this->repository = $repository;
         $this->formRequest = UserRequest::class;
-        $this->middleware(['auth:api'])->except('store');
+        $this->middleware(['auth:api'])->except(['store']);
     }
 
     public function update(Request $request, $id)

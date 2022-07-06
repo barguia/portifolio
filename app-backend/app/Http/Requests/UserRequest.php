@@ -55,4 +55,3 @@ class UserRequest extends FormRequest
         return $validator;
     }
 }
-
